@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+
+<head>
+    <macrolist>
+            <macro id="nlheader">
+                 <!-- <table style="width: 100%;">
+                    <tr>
+                        <td align="center"> <b>CHECKOUT FORM</b></td>
+                    </tr>
+                </table> -->
+            </macro>
+            <macro id="nlfooter">
+                 <table style="width: 100%">
+                    <tr>
+                    <td align="right "></td>
+                    </tr>
+                 </table>
+            </macro>
+    </macrolist>
+     <style type="text/css">
+            * {
+                <#if .locale=="zh_CN">font-family: NotoSans, NotoSansCJKsc, sans-serif;
+                <#elseif .locale=="zh_TW">font-family: NotoSans, NotoSansCJKtc, sans-serif;
+                <#elseif .locale=="ja_JP">font-family: NotoSans, NotoSansCJKjp, sans-serif;
+                <#elseif .locale=="ko_KR">font-family: NotoSans, NotoSansCJKkr, sans-serif;
+                <#elseif .locale=="th_TH">font-family: NotoSans, NotoSansThai, sans-serif;
+                <#else>font-family: NotoSans, sans-serif;
+                </#if>
+            }
+
+            table {
+                font-size: 9pt;
+                table-layout: fixed;
+            }
+
+            th {
+                font-weight: bold;
+                font-size: 9pt;
+                vertical-align: middle;
+                /* padding: 5px 6px 3px; */
+                /* background-color: #e3e3e3; */
+                color: #333333;
+            }
+
+
+            .payment-schedule tr th {
+                border-left: 1px solid #000;
+                border-top: 1px solid #000;
+                border-bottom: 1px solid #000;
+                font-size: 6.5pt;
+                text-align: center;
+                vertical-align: middle;
+                padding: 2px 2px 2px 2px;
+            }
+
+            .payment-schedule th:last-child {
+                border-right: 1px solid #000;
+            }
+
+            .payment-schedule td:last-child {
+                border-right: 1px solid #000;
+            }
+
+            .payment-schedule tr td {
+                font-size: 6.5pt;
+                border-left: 1px solid #000;
+                /* border-top: 1px solid #000; */
+                border-bottom: 1px solid #000;
+                vertical-align: middle;
+            }
+
+            .heading {
+                font-size: 6.5pt;
+                font-weight: bold;
+            }
+
+            .customer-detail tr th {
+                font-size: 6.5pt;
+                text-align: left;
+                vertical-align: middle;
+                padding: 2px 2px 2px 2px;
+                font-weight: bold;
+            }
+
+            .customer-detail td {
+                font-size: 6.5pt;
+            }
+
+            .ending-note {
+                margin-top: 15px;
+                font-size: 8pt;
+            }
+        </style>
+</head>
+<body header="nlheader" footer="nlfooter" size="A4">
+
+         <table style="width: 100%;">
+            <tr style="padding:5px;background-color:#F8FF00">
+                <td align="left" style="background-color:#FFFFFF; margin-left:10px ;padding: 20px"> <img  src="https://8977849.app.netsuite.com/core/media/media.nl?id=1816&c=8977849&h=IB_WUdwc7qYQ4tcRLfapnqCeHsegRILn78sqgzmj1L7DKnXW" style="float: left;margin: 7px;width:15%;height:20%;box-shadow: 5px 10px #888888" /></td>
+                <td align="center" style="margin-top:20px; margin-left:70px">
+                    <b> P.O. Box: 7992 Dubai-UAE</b>     <br/><br/>
+                    <b>Telephone : +971 52 99 11 111</b> <br/><br/>
+                    <b> Email: info@localstorage.ae</b>  <br/><br/>
+                    <b>Website : www.localstorage.ae</b>
+                </td>
+            </tr>
+        </table>
+
+
+        <table style="width: 100%;">
+            <tr>
+                <td align="center" style="font-size: 20pt"> <b>CHECKOUT FORM</b></td>
+            </tr>
+        </table>
+
+        <table  style="width: 100%;">
+            <tr style="margin-top:20px">
+                <td align="left">Agreement Ref # :</td>
+                <td style="color: #1E4FFF"> ${inputData.agreementRef}</td>
+                <td>Check out Date:  ${inputData.checkoutDate}</td>
+            </tr>
+        </table>
+
+        <table style="width: 100%; font-size: 8pt">
+            <tr >
+                <td style="border: 1px black;" align="center" width="15%">Lessee's Name: </td>
+                <td style="border: 1px black;"   width="45%"><p>${inputData.customer}</p></td>
+                <td style="border: 1px black;" align='center' width="15%">Mobiles</td>
+                <td style="border: 1px black;"  width="25%">${inputData.mobileNumber}</td>
+            </tr>
+             <tr >
+                <td style="border: 1px black;" align="center" width="15%">Phone: </td>
+                <td style="border: 1px black;"   width="45%">${inputData.customerPhone}</td>
+                <td style="border: 1px black;" align='center' width="15%">Email</td>
+                <td style="border: 1px black;"  width="25%">${inputData.customerEmail}</td>
+            </tr>
+        </table>
+
+        <table style="width: 100%; margin-top:20px;">
+             <tr>
+                <th colspan="8" style="border: 1px black ; padding-left:10px ; font-size: 10pt ;background-color:#D2D2D2"><b>Initial Lease Agreement Details</b></th>
+            </tr>
+    
+            <tr>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Contract#</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Unit#</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Start Date</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">End Date</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Amount</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Padlock</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Vat 5%</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center"> Security<br />Deposit</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Total Amount</th>
+            </tr>
+            <#list inputData.initialLeaseAgreementDetails as details>
+            <tr>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.name}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.storageUnitName}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.startDate}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.endDate}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.leaseAmount}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.padlock}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.vatAmount}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.securityDeposit}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.totalAmount}</td>
+            </tr>
+            </#list>
+             <#list inputData.initialLeaseAgreementDetails as details>
+            <tr>
+                <td colspan="4" style="border: 1px black; font-size: 8pt; background-color:#D2D2D2 " align="center"><b> Total Initial Amount</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.leaseAmount}</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.padlock}</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.vatAmount}</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.securityDeposit}</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.totalAmount}</b></td>
+            </tr>
+             </#list>
+        </table>
+
+        <table style="width: 100%; margin-top:20px;">
+            <tr>
+                <th colspan="8" style="border: 1px black; background-color:#D2D2D2; padding-left:10px; font-size: 10pt "><b>Lease Extension Agreement Details</b></th>
+            </tr>
+            
+             <tr>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Contract#</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Unit#</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Start Date</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">End Date</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Amount</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Padlock</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Vat 5%</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Security<br />Deposit</th>
+                <th style=" border: 1px black ;   font-size: 8pt" align="center">Total Amount</th>
+            </tr>
+            
+            <#list inputData.leaseExtensionAgreementDetails as details>
+            <tr>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.name}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.storageUnitName}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.startDate}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.endDate}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.leaseAmount}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">-</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.vatAmount}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.securityDeposit}</td>
+                <td style=" border: 1px black ; padding: 10px;  font-size: 8pt" align="center">${details.totalAmount}</td>
+            </tr>
+            </#list>
+
+            <#list inputData.RenewalValuesSum as details>
+            <tr>
+                <td colspan="4" style=" border: 1px black; ;background-color:#D2D2D2 ; font-size: 8pt;" align="center"> <b>Total Extension Amount</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.totalLeaseAmount}</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt " align="center"><b>-</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.totalVatAmount}</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.totalCustomerDeposit}</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.totalAmount}</b></td>
+            </tr>
+            </#list>
+
+             <#list inputData.totalAgreementAmountDetails as details>
+            <tr style="margin-top:20px">
+                <td colspan="4" style=" border: 1px black; font-size: 8pt;background-color:#D2D2D2 " align="center"><b>Total Agreement Amount</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.totalLeaseAmount}</b></td>
+                <td style=" border: 1px black ; font-size: 8pt" align="center"><b>${inputData.padlockValue}</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b> ${details.totalTaxAmount}</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b> ${details.totalSecurityDeposit}</b></td>
+                <td style=" border: 1px black ;  font-size: 8pt" align="center"><b>${details.totalAgreementAmount}</b></td>
+            </tr>
+            </#list>
+
+        </table>
+
+
+        <table style="width: 100%; margin-top:20px;">
+            <tr>
+                <th colspan="7" style="border: 1px black ; padding-left:10px ; font-size: 8pt ;background-color:#D2D2D2"><b>Excess Stay (if any) till:</b></th>
+            </tr>
+            <tr>
+                <td ></td>
+                <td style=" border: 1px black ; font-size: 8pt"><b>Lease Amount</b></td>
+                <td style=" border: 1px black  ; font-size: 8pt" ></td>
+                <td style=" border: 1px black ; font-size: 8pt"><b>Late Charges</b></td>
+                <td style=" border: 1px black; font-size: 8pt">${inputData.lateChargesAmount}</td>
+                <td style=" border: 1px black  ; font-size: 8pt"><b>Vat 5%</b></td>
+                <td style=" border: 1px black ; font-size: 8pt">${inputData.lateChargestTax}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td colspan="2" style=" border: 1px black ; font-size: 8pt ;background-color:#D2D2D2" align="left"> Total Excess Amount</td>
+                <td colspan="4" style=" border: 1px black ; font-size: 8pt ;background-color:#D2D2D2" align="center">0</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <#list inputData.initialLeaseAgreementDetails as details>
+             <tr style="margin-top:10px">
+                <td></td>
+                <td colspan="2" style=" border: 1px black ; font-size: 8pt ;background-color:#D2D2D2" align="left">Packing Charges Including VAT if Any</td>
+                <td colspan="4" style=" border: 1px black ; font-size: 8pt ;background-color:#D2D2D2" align="center">${details.packingCharges}</td>
+            </tr>
+            </#list>
+        </table>
+
+        <table style="width: 100%; margin-top:20px;">
+        <#list inputData.totalAgreementAmountDetails as details>
+            <tr>
+                <td  style=" border: 1px black ; font-size: 8pt;background-color:#D2D2D2" align="left"><b>Total Amount Collected</b></td>
+                <td  style=" border: 1px black ; font-size: 8pt" align="center"><b>AED ${details.totalAmountCollected}</b></td>
+            </tr>
+             <tr>
+                <td  style=" border: 1px black ; font-size: 8pt;background-color:#D2D2D2 " align="left"><b>Refund of Security Deposit</b></td>
+                <td  style=" border: 1px black ; font-size: 8pt" align="center"><b>AED ${inputData.refundDepositAmount}</b></td>
+            </tr>
+             <tr>
+                <td  style=" border: 1px black ; font-size: 8pt ;background-color:#D2D2D2" align="left"><b>To be Refunded "to"/</b><span style="color: #B50133;"><b>(Paid)</b></span><b> "by" Lessee</b></td>
+                <td  style=" border: 1px black ; font-size: 8pt ;" align="center"><b>AED 0.00</b></td>
+            </tr>
+              </#list>
+        </table>
+        <span style="color: #B50133">Only No AED Only</span>
+        <table style="width: 100%; margin-top:20px;">
+            <tr>
+                <td>Name: Saqib Masih</td>
+                <td>Name: </td>
+            </tr>
+             <tr style="margin:20px;">
+                <td>Signed by :_____________________________________</td>
+                <td>Signed by :_____________________________________</td>
+            </tr>
+             <tr>
+                <td>For and on behalf of the Lessor: </td>
+                <td>For and on behalf of the Lessee:</td>
+            </tr>
+        </table>
+</body>
+</pdf>

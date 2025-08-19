@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+
+    <head>
+    <macrolist>
+            <macro id="nlheader">
+                 <table style="width: 100%;">
+                    <tr>
+                        <td align="center"> LOCAL SELF - STORAGE FZ L.LC</td>
+                    </tr>
+                     <tr>
+                        <td align="center"> <em>Dubai Production City, Dubai UAE</em></td>
+                    </tr>
+                </table>
+            </macro>
+            <macro id="nlfooter">
+            </macro>
+        </macrolist>
+        </head>
+    <body header="nlheader" footer="nlfooter">
+        <table style="width: 100%">
+            <tr style="margin-top: 100px">
+                <td align="center">Pre-Checkout Inspection Checklist</td>
+                <td align="center">Date:</td>
+            </tr>
+            <tr>
+                <td align="center">UNIT INSPECTION</td>
+                <td align="center">Lease no:</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td align="center">Unit no:</td>
+            </tr>
+        </table>
+        <table style="margin-top: 50px" align="center">
+            <tr>
+                <th style=" border: 1px black; padding: 0px 10px 0 10px"></th>
+                <th style=" border: 1px black; padding: 0px 50px 0 10px">Description</th>
+                <th style=" border: 1px black; padding: 0px 50px 0 10px">Damaged</th>
+                <th style=" border: 1px black; padding: 0px 50px 0 10px">No Damage</th>
+                <th style=" border: 1px black; padding: 0px 50px 0 10px">Remarks</th>
+            </tr>
+            <tr>
+                <td style=" border: 1px black; padding: 0px 10px 0 10px">1</td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px">Roll-up door</td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+            </tr>
+            <tr>
+                <td style=" border: 1px black; padding: 0px 10px 0 10px">2</td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"> Floor</td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+            </tr>
+            <tr>
+                <td style=" border: 1px black; padding: 0px 10px 0 10px">3</td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px">Mesh Ceiling</td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+            </tr>
+            <tr>
+                <td style=" border: 1px black; padding: 0px 10px 0 10px">4</td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px">Walls</td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+                <td style=" border: 1px black; padding: 0px 50px 0 10px"></td>
+            </tr>
+        </table>
+          <table style="width: 100%">
+            <tr style="margin-top: 100px">
+                <td align="center">Checked by:</td>
+                <td align="center">Date:</td>
+            </tr>
+           
+            <tr>
+                <td align="center">Name:</td>
+                <td align="center">Customer name:</td>
+            </tr>
+            <tr>
+                <td align="center">Sign:</td>
+                <td align="center">Customer Sign:</td>
+            </tr>
+        </table>
+    </body>
+</pdf>

@@ -1,0 +1,1172 @@
+<?xml version="1.0"?>
+<!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+    <head>
+        <link name="NotoSans" type="font" subtype="truetype" src="${nsfont.NotoSans_Regular}"
+            src-bold="${nsfont.NotoSans_Bold}" src-italic="${nsfont.NotoSans_Italic}"
+            src-bolditalic="${nsfont.NotoSans_BoldItalic}" bytes="2" />
+        <#if .locale=="zh_CN">
+            <link name="NotoSansCJKsc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKsc_Regular}"
+                src-bold="${nsfont.NotoSansCJKsc_Bold}" bytes="2" />
+            <#elseif .locale=="zh_TW">
+                <link name="NotoSansCJKtc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKtc_Regular}"
+                    src-bold="${nsfont.NotoSansCJKtc_Bold}" bytes="2" />
+                <#elseif .locale=="ja_JP">
+                    <link name="NotoSansCJKjp" type="font" subtype="opentype" src="${nsfont.NotoSansCJKjp_Regular}"
+                        src-bold="${nsfont.NotoSansCJKjp_Bold}" bytes="2" />
+                    <#elseif .locale=="ko_KR">
+                        <link name="NotoSansCJKkr" type="font" subtype="opentype" src="${nsfont.NotoSansCJKkr_Regular}"
+                            src-bold="${nsfont.NotoSansCJKkr_Bold}" bytes="2" />
+                        <#elseif .locale=="th_TH">
+                            <link name="NotoSansThai" type="font" subtype="opentype"
+                                src="${nsfont.NotoSansThai_Regular}" src-bold="${nsfont.NotoSansThai_Bold}" bytes="2" />
+        </#if>
+        <macrolist>
+            <macro id="nlheader">
+            <table style="width: 100%">
+                    <tr>
+                    <td align="left"><img  src="https://8977849.app.netsuite.com/core/media/media.nl?id=1816&c=8977849&h=IB_WUdwc7qYQ4tcRLfapnqCeHsegRILn78sqgzmj1L7DKnXW" style="float: left;margin: 7px;width:28%;height:28%;" /></td>
+                    <td align="right"><b>P.O.Box:</b> 7992 Dubai-UAE <br /><b>Telephone:</b> +971 52 99 11 111 <br /><b>Email:</b> info@localstorage.ae <br /><b>Website:</b> www.localstorage.ae</td>
+
+                    </tr>
+                    <tr>
+                    <td align="left"><b>Agreement # </b> ${inputData.customerDetails.contractName}</td>
+                    </tr>
+                    
+                 </table>
+            </macro>
+            <macro id="nlfooter">
+                 <table style="width: 100%">
+                    <tr>
+                    <td align="right "><pagenumber /></td>
+                    </tr>
+                 </table>
+            </macro>
+        </macrolist>
+          <style type="text/css">
+            * {
+                <#if .locale=="zh_CN">font-family: NotoSans, NotoSansCJKsc, sans-serif;
+                <#elseif .locale=="zh_TW">font-family: NotoSans, NotoSansCJKtc, sans-serif;
+                <#elseif .locale=="ja_JP">font-family: NotoSans, NotoSansCJKjp, sans-serif;
+                <#elseif .locale=="ko_KR">font-family: NotoSans, NotoSansCJKkr, sans-serif;
+                <#elseif .locale=="th_TH">font-family: NotoSans, NotoSansThai, sans-serif;
+                <#else>font-family: NotoSans, sans-serif;
+                </#if>
+            }
+
+            table {
+                font-size: 9pt;
+                table-layout: fixed;
+            }
+
+            th {
+                font-weight: bold;
+                font-size: 9pt;
+                vertical-align: middle;
+                /* padding: 5px 6px 3px; */
+                /* background-color: #e3e3e3; */
+                color: #333333;
+            }
+
+
+            .payment-schedule tr th {
+                border-left: 1px solid #000;
+                border-top: 1px solid #000;
+                border-bottom: 1px solid #000;
+                font-size: 6.5pt;
+                text-align: center;
+                vertical-align: middle;
+                padding: 2px 2px 2px 2px;
+            }
+
+            .payment-schedule th:last-child {
+                border-right: 1px solid #000;
+            }
+
+            .payment-schedule td:last-child {
+                border-right: 1px solid #000;
+            }
+
+            .payment-schedule tr td {
+                font-size: 6.5pt;
+                border-left: 1px solid #000;
+                /* border-top: 1px solid #000; */
+                border-bottom: 1px solid #000;
+                vertical-align: middle;
+            }
+
+            .heading {
+                font-size: 6.5pt;
+                font-weight: bold;
+            }
+
+            .customer-detail tr th {
+                font-size: 6.5pt;
+                text-align: left;
+                vertical-align: middle;
+                padding: 2px 2px 2px 2px;
+                font-weight: bold;
+            }
+
+            .customer-detail td {
+                font-size: 6.5pt;
+            }
+
+            .ending-note {
+                margin-top: 15px;
+                font-size: 7pt;
+            }
+        </style>
+    </head>
+
+    <body header="nlheader" header-height="7%" footer="nlfooter">
+                <table style="width: 100%;">
+                    <tr>
+                        <td align="center"> <b><u>SELF STORAGE AGREEMENT (“Agreement”)</u></b></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><b>${inputData.customerDetails.contractName}</b></td>
+                    </tr>
+                </table>
+        <table>
+            <tr style="width: 100% ;margin: 30px;">
+                <td>
+                    <b>LOCAL SELF STORAGE FZ-LLC Company</b>, with it’s registered address at _Dubai Production City P.O. Box:
+                    7992_, Dubai, United Arab Emirates (hereinafter called “Company”)
+                </td>
+            </tr>
+
+            <tr style="margin-bottom: 20px;">
+                <td>
+                <b><u>PREAMBLE</u></b>
+                </td>
+            </tr>
+
+            <tr style="margin-bottom: 20px;">
+                <td>
+                WHEREAS, the Company provides self-storage facility at the Premise located in Dubai
+                Production City
+                </td>
+            </tr>
+           
+            <tr style="margin-bottom: 20px;">
+                <td>
+                AND WHEREAS, under the terms of this Agreement dated ${inputData.printDate}, the Occupier has
+                taken Unit Numbers as specified in the Particulars below (hereinafter referred to as the
+                "Storage Unit(s)”) for the period starting ${inputData.contractStartDate} and ending ${inputData.contractEndDate} (“Term”).
+                </td>
+            </tr>
+            <tr style="margin-bottom: 20px;">
+                <td>
+                The Particulars below along with the General Terms & Conditions shall together constitute
+                this Agreement.
+                </td>
+            </tr>
+            <tr style="margin-bottom: 20px;">
+                <td>
+                <b><u>PARTICULARS: Storage Unit and Payment Details</u></b>
+                </td>
+            </tr>
+        </table>
+
+        <table style="width:100%">
+            <tr>
+                <td style=" border: 1px #000;"><b>Individual/ Company Name (Occupier)</b></td>
+                <td style=" border: 1px #000;">${inputData.customerDetails.customerName}</td>
+            </tr>
+            <tr>
+                <td style=" border: 1px #000;"><b>Mobile Number</b></td>
+                <td style=" border: 1px #000;">${inputData.customerDetails.customerMobileNo}</td>
+            </tr>
+            <tr>
+                <td style=" border: 1px #000;"><b>Phone Number</b></td>
+                <td style=" border: 1px #000;">${inputData.customerDetails.customerPhoneNo}</td>
+            </tr>
+            <tr> 
+                <td style=" border: 1px #000;"><b>Email Address</b></td>
+                <td style=" border: 1px #000;">${inputData.customerDetails.customerEmail}</td>
+            </tr>
+            <tr> 
+                <td style=" border: 1px #000;"><b>Address</b></td>
+                <td style=" border: 1px #000;">${inputData.customerDetails.customerAddress}</td>
+            </tr>
+        </table>
+
+        <table style="width:100%; margin-top: 30px;">
+            <tr>
+                <th style=" border: 1px #000;  padding: 5px;  " colspan="2" align="left">Storage Unit Details:</th>
+            </tr>
+            <tr>
+                <th style=" border: 1px #000; padding: 10px; " align="left">Storage Unit No:</th>
+                <th style=" border: 1px #000; padding: 10px; " align="left">Nominal Size</th>
+                <th style=" border: 1px #000; padding: 10px; " align="left">Rate per Sqft</th>
+                <th style=" border: 1px #000; padding: 10px; " align="left">Monthly<br /> Rent</th>
+                <th style=" border: 1px #000; padding: 10px; " align="left">Start Date</th>
+                <th style=" border: 1px #000; padding: 10px; " align="left">End Date</th>
+                <th style=" border: 1px #000; padding: 10px; " align="center">Floor</th>
+
+            </tr>
+         
+
+             <#list inputData.storageUnitDetails as details>
+             <#if details_index==0>
+            <tr>
+                <td style=" border: 1px #000; padding: 10px" align="center">${details.storageUnitName}</td>
+                <td style=" border: 1px #000; padding: 10px" align="center">${details.storageUnitSize}</td>
+                <td style=" border: 1px #000; padding: 10px" align="center">${details.storageUnitRatePerSqft}</td>
+                <td style=" border: 1px #000; padding: 10px" align="center">${details.storageUnitPrice}</td>
+                <td style=" border: 1px #000; padding: 10px" align="center">${details.startDate}</td>
+                <td style=" border: 1px #000; padding: 10px" align="center">${details.endDate}</td>
+                <td style=" border: 1px #000; padding: 10px" align="center">${details.storageUnitFloorName}</td>
+            </tr>
+            <#else>
+            <tr>
+                <td style=" border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.storageUnitName}</td>
+                <td style=" border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.storageUnitSize}</td>
+                <td style=" border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.storageUnitRatePerSqft}</td>
+                <td style=" border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.storageUnitPrice}</td>
+                <td style=" border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.startDate}</td>
+                <td style=" border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.endDate}</td>
+                <td style=" border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.storageUnitFloorName}</td>
+            </tr>
+            </#if>
+            </#list>
+         
+           
+        </table>
+        <p style="margin-left:10px ; font-size: 7pt;">*Sqft = Square Feet</p>
+
+        <table style="width:100%; margin-top: 20px;">
+            <tr>
+                <th style=" border: 1px ;  padding: 10px" align="center">Storage <br/> Unit No:</th>
+                <th style=" border: 1px ;  padding: 10px" align="center">Payable <br/> Amount</th>
+                <th style=" border: 1px ;  padding: 10px" align="center">Padlock</th>
+                <th style=" border: 1px ;  padding: 10px" align="center">VAT</th>
+                <th style=" border: 1px ;  padding: 10px" align="center">Packing  <br/> Charges</th>
+                <th style=" border: 1px ;  padding: 10px" align="center">Security <br/> Deposit</th>
+                <th style=" border: 1px ;  padding: 10px" align="center">Discount</th>
+                <th style=" border: 1px ;  padding: 10px" align="center">Total (AED)</th>
+
+            </tr>
+            <#list inputData.salesOrderDetails as details>
+             <#if details_index==0>
+            <tr>
+                <td style="border: 1px #000; padding: 10px" align="center">${details.storageUnitName}</td>
+                <td style="border: 1px #000; padding: 10px" align="center">${details.payableAmout}</td>
+                <td style="border: 1px #000; padding: 10px" align="center">${details.padlockAmount}</td>
+                <td style="border: 1px #000; padding: 10px" align="center">${details.taxTotal} </td>
+                <td style="border: 1px #000; padding: 10px" align="center">${details.packingCharges}</td>
+                <td style="border: 1px #000; padding: 10px" align="center">${details.securityDepositAmount}</td>
+                <td style="border: 1px #000; padding: 10px" align="center">${details.discountAmount}</td>
+                <td style="border: 1px #000; padding: 10px" align="center">${details.totalAmount}</td>
+            </tr>
+             <#else>
+              <tr>
+                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.storageUnitName}</td>
+                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.payableAmout}</td>
+                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.padlockAmount}</td>
+                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.taxTotal} </td>
+                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.packingCharges}</td>
+                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.securityDepositAmount}</td>
+                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.discountAmount}</td>
+                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.totalAmount}</td>
+            </tr>
+            </#if>
+            </#list>
+          
+           
+        </table>
+
+        
+        <table>
+            <tr>
+                <td>1. <b><u>Mode of Payment for the Storage Unit:</u></b></td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>1.1 The Occupier shall select whether they will be opting for Automatic Recurring Online Payment or Manual Payment.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td style="margin-left:50px">Option to be ticked:
+                    <ul class="bulleted-list" style="margin-left:50px">
+                        <li><b>Automatic Recurring Payment</b></li>
+                        <li><b>Manual Payment</b></li>
+                    </ul>
+                </td>
+            </tr>
+          
+
+          
+
+            <tr style="margin-top:20px">
+                <td>1.2 Each payment option shall be subject to specific terms and be fulfilled by the Occupier.
+                    In all cases, One (1) Month Security Deposit shall be payable by the Occupier.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>1.3 The different modes of payment and the specific terms are as follows.</td>
+            </tr>
+
+            <tr>
+                <td style="margin-left:20px">a) <b>Automatic Recurring Online Payment by Credit Card:</b> Payment shall be deducted
+                    on a monthly basis as per the card details provided by the Occupier and the
+                    subscription shall be renewed automatically as per the terms of this Agreement.
+                    Until the subscription is cancelled fifteen (15) calendar days prior to the expiry date
+                    and in compliance with the Checkout and Handover Section 4 of this Particulars.</td>
+            </tr>
+
+            <tr>
+                <td style="margin-left:20px; margin-top:20px">
+                    b) <b>Manual Payment by Cheque, Bank Transfer, Credit Card and/or Cash:</b> Payment
+                    shall be made either for the entire Term or on a monthly basis for the use of the
+                    Storage Unit(s), if the Occupier is making the payment through cheque, bank
+                    transfer or by cash.
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-left:50px; margin-top:10px" >1. For (b) above, the Occupier shall state the number of months for which
+                    they will rent the Storage Unit(s) 
+                    <ul class="bulleted-list">
+                        <li><b>Number of Months: ${inputData.contractDuration}</b></li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-left:50px" >1. For (b) above, the Occupier shall state the number of months for which
+                    they will rent the Storage Unit(s) 
+                    <ul class="bulleted-list">
+                        <li><b>Number of Months: ${inputData.contractDuration}</b></li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-left:50px" >The Mode of Payment:
+                    <ul class="bulleted-list">
+                        <li><b>Cash Cheque Bank Transfer Credit Card</b></li>
+                    </ul>
+                </td>
+            </tr>
+
+            
+            <tr>
+                <td style="margin-left:50px" >The Occupier is required to select whether they are making the payment
+            for the Term in advance and in full or on a monthly basis.
+                    <ul class="bulleted-list">
+                        <li><b>Entire Payment Monthly Payment</b></li>
+                    </ul>
+                </td>
+            </tr>
+
+             <tr style="margin-top:20px">
+                <td>1.4 The payments are required to be made three (3) working days prior to the due date.</td>
+            </tr>
+
+
+             <tr style="margin-top:20px">
+                <td>1.5 Cheques are to be issued in the name of:<span style="margin-left:5px"><b> LOCAL SELF STORAGE FZ-LLC Company</b> </span></td>
+            </tr>
+
+
+             <tr style="margin-top:20px">
+                <td>1.6 For bank transfer, the Occupier is required to provide their name, invoice number as
+                issued by the Company and Storage Unit No. in the reference while making the bank
+                transfer in order for the Company to be able to verify the payment. Failure to verify the
+                payment shall result in the overlocking of the Storage Unit and delayed payment penalties. Within twenty-four (24) hours of the bank transfer, the Occupier is required
+                to send an email to the Company with their name, the Storage Unit No, and the proof
+                of payment (e.g. screenshot and/or bank transfer advice) attached to the email for the
+                Company’s records.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>1.7 Payments made by the Occupier shall under no circumstances be refunded for any
+                reason, including but not limited to, the Occupier failing to use the Storage Unit,
+                vacating the Storage Unit, and/or handing over the Storage Unit to the Company prior
+                to the end of the Term.</td>
+            </tr>
+        </table>
+
+
+        <pbr/>
+        <table>
+          
+            <tr style="margin-top:20px">
+                <td>2.<b> Padlock:</b> The Occupier shall be provided with a Padlock and Key to be used for their
+                Storage Unit, for a non-refundable charge payable to the Company. If the Occupier loses
+                the Padlock and/or Key, they shall pay charges to the Company for breaking into the
+                Storage Unit and for the replacement Padlock and Key.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>3.<b> Cancellation:</b> The Occupier may cancel the Agreement prior to the end of the Term by
+                giving the written notice as provided for below:</td>
+            </tr>
+
+            <tr>
+                <td style="margin-left:20px; margin-top:10px">a. Agreement of 1 month requires the Occupier to give a written cancellation notice
+                of at least 10 days prior to expiry date of the Agreement.</td>
+            </tr>
+
+             <tr>
+                <td style="margin-left:20px; margin-top:10px">b. Agreement of up to 3 months requires the Occupier to give a written cancellation
+notice of at least 15 days prior to expiry date of the Agreement.</td>
+            </tr>
+
+             <tr>
+                <td style="margin-left:20px; margin-top:10px">c. Agreement between 4 to 6 months requires the Occupier to give a written
+cancelation notice of at least 30 days prior to the expiry date of the Agreement.</td>
+            </tr>
+
+
+            <tr>
+                <td style="margin-left:20px">d. Agreement longer than 6 months requires the Occupier to give a written
+cancelation notice of at least 60 days prior to expiry date of the Agreement.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>4.<b> Checkout & Handover:</b> The Occupier is required to handover the Storage Unit to the
+Company representative in person after the inspection by the Company representative
+and submission of the checkout/handover form on the expiry date of the Agreement
+and/or at the time of vacating the Storage Unit. Further, the Occupier shall also comply
+with the requirements under Clause 9 of the General Terms & Conditions. Unless the
+requirements under this Section 4 is fully complied with, the Agreement shall be
+deemed to be valid and continuing and the Occupier continue to be liable to pay the
+rental and any other charges as applicable.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>5.<b> Security Deposit:</b> The Occupier undertakes to pay a security deposit equivalent to the
+value of One Month’s Payment. The security deposit shall be refunded, after the
+deduction of any cost towards damages and other outstanding dues. The refund cheque
+shall be issued within fourteen (14) days of the checkout date. If the Security Deposit
+refund cheque is not collected and/or encashed within six (6) months from the checkout
+date, then the Security Deposit shall be forfeited.</td>
+            </tr>
+
+             <tr style="margin-top:20px">
+                <td>6.<b> Late Payment Charges:</b> The Occupier undertakes to make all payments on or before
+the due date and if there is any delay, then the Occupier shall pay Late Payment
+Charges of Two Hundred and Fifty Dirhams (AED 250) per week to the Company, in
+addition to the rental of the Storage Unit until all outstanding payments have been fully
+settled.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>7. If the Occupier defaults in making any payment, then the Company retains the right to
+close the access to and/or use of the Storage Unit until all the dues are settled to the
+satisfaction of the Company.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>8. The Storage Unit rate per Sqft is subject to change at the sole discretion of the
+Company as per market standards.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>9. Should a corporate entity be the Occupier or an Individual, in both instances, the person
+signing this document must be an authorized signatory on behalf of the Occupier. The
+authorized signatory should be an individual whose name appears on the trade license,
+or they are required to produce a notarized proxy signed by the trade license owner
+authorizing them to sign on the Occupier’s behalf.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>10. Access to the Storage Unit shall be as per the agreed timings which are subject to
+change at the sole discretion of the Company.</td>
+            </tr>   
+
+             <tr style="margin-top:20px">
+                <td>11. The Occupier undertakes not to make or permit to be made any alterations or additions
+to the Storage Unit without obtaining the prior written consent of the Company.</td>
+            </tr>  
+
+            <tr style="margin-top:20px">
+                <td>12. These Particulars shall at all times be read with the attached General Terms and
+Conditions (“GTC”) and the GTC will also be available online on the official website of
+the Company.</td>
+            </tr>
+
+            <tr style="margin-top:20px">
+                <td>13. The GTC are subject to change from time to time at the sole discretion of the Company,
+and it is the responsibility of the Occupier to check for any updates on the website. Any
+change to the GTC as published on the website shall be effective immediately without
+any notice.
+</td>
+            </tr>   
+        </table>
+
+        <pbr/>
+        <table style="width:100%">
+                    <tr>
+                        <td align="center"> <b><u>GENERAL TERMS AND CONDITIONS (“GTC”)</u></b></td>
+                    </tr>
+    
+        </table>
+
+        <table>
+            <tr>
+                <td> <b>The Occupier agrees to the following terms and conditions</b></td>
+            </tr>   
+        
+            <tr>
+                <td> <b><u>1.INCORPORATION</u></b></td>
+            </tr>
+
+             <tr style="margin-top: 20px">
+                <td>The Particulars, these GTC and the attachments together constitute the Agreement.</td>
+            </tr>
+
+            <tr style="margin-top: 20px">
+                <td> <b><u>2. DEFINITIONS</u></b></td>
+            </tr>
+
+             <tr style="margin-top: 20px">
+                <td>Each of the following expressions used in this Agreement shall have the meaning assigned hereunder.</td>
+            </tr>
+            <tr style="margin-top: 20px">
+                <td><b>"Appendix"</b> means any attachment referred to in this Agreement;</td>
+            </tr>
+
+            <tr style="margin-top: 20px">
+                <td><b>"Common Area and Facilities"</b> means those areas and facilities, in and on the Premises that
+                    are not given by the Company to the Occupier or to any other Occupiers on the Premises to
+                    be used for storage purpose and which are now or hereafter provided by the Company for
+                    common use by the Occupier and other Occupiers on the Premise. Common Area and
+                    Facilities shall include but not be limited to all roads, gardens, walls, designated car parks,
+                    passages, entrances, halls, toilets, stairways, lifts, and other grounds and amenities which
+                    the Company may from time to time provide and make available.
+                </td>
+            </tr>
+
+            <tr style="margin-top: 20px">
+                <td><b>"House Rules"</b> means the rules and regulations prescribed by the Company relating to the
+management, functioning and care of the Storage Unit and Common Areas used by the
+Occupier, as well as the conduct of the Occupiers on the Premises. (Appendix: 1)
+                </td>
+            </tr>
+
+            <tr style="margin-top: 20px">
+                <td><b>"Party"</b> means either the Company or the Occupier as the context admits and Parties
+means both of them.
+                </td>
+            </tr>
+
+            <tr style="margin-top: 20px">
+                <td><b>"Payments"</b> means the amount payable for the use of the Storage Unit, Security Deposit,
+Late Payment Charge, any penalties payable and/or any other payments which may
+become due and payable by the Occupier to the Company in accordance with this
+Agreement.
+                </td>
+            </tr>
+
+            <tr style="margin-top: 20px">
+                <td><b>"Premises"</b> means the entire area of the storage facility of the Company in _______;
+                </td>
+            </tr>
+
+            <tr style="margin-top: 20px">
+                <td><b>"Storage Period"</b> means the Start Date and End Date as specified in the Particulars.
+                </td>
+            </tr>
+
+            <tr style="margin-top: 20px">
+                <td><b>"Storage Unit"</b> means the storage unit and/or any storage area as specified in the
+                Particulars.
+                </td>
+            </tr>
+
+            
+            <tr style="margin-top: 20px">
+                <td> <b><u>3. STORAGE UNIT PROVISION</u></b></td>
+            </tr>
+
+            <tr style="margin-top: 20px">
+                <td>The Company hereby grants the Storage Unit to the Occupier for the Term of this
+Agreement for storage subject to all the conditions stipulated, and the Occupier undertakes
+to comply with the conditions herein.
+                </td>
+            </tr>
+            
+            <tr style="margin-top: 20px">
+                <td> <b><u>4. OCCUPIER’S COVENANTS</u></b></td>
+            </tr>
+            <tr style="margin-top: 20px">
+                <td>The Occupier hereby undertakes as follows:
+                </td>
+            </tr>
+
+             <tr>
+                <td style="margin-left:20px ;margin-top: 10px">a) The Occupier has read and understood all the terms and conditions of the
+                    Agreement and undertakes to abide by them at all times. The Occupier
+                    understands that the Storage Unit is part of the <b>Company’s</b> Premises where the
+                    Occupier’s rights may be affected if he fails to conform to the terms and conditions
+                    of this Agreement.
+                </td>
+                
+            </tr>
+                    
+             <tr>
+                <td style="margin-left:20px;margin-top: 10px">b) If the Occupier fails to vacate the Storage Unit(s) before or by the expiry date of the
+Agreement, the Occupier shall automatically be charged additional monthly rent(s)
+for every delayed month plus an administrative fee of Two Hundred and Fifty
+Dirhams (AED 250). For avoidance of doubt, these aforementioned additional
+charges along with any other outstanding payments must be paid to the Company
+before being permitted to vacate the Storage Unit(s).</td>
+            </tr>        
+        </table>
+
+        <pbr/>
+            <table>
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">c) The Occupiers shall use the elevators at their own risk and the Company shall not
+                            be held liable for the operation or malfunction of the elevators on the Premises.
+                    </td>
+                </tr> 
+
+                 <tr>
+                    <td style="margin-left:20px;margin-top: 10px">d) If the Occupier is in default of a payment or breaches the terms of this Agreement,
+the Company has unconditional right to stop the usage of the Storage Unit(s) by the
+Occupier. In such an event, they shall be liable to pay a mandatory monthly fee
+of Two Hundred and Fifty Dirhams (AED 250) for rooms under 200 sqft. and Five
+Hundred Dirhams (AED 500) for rooms between 200 to 310 sqft. This monthly fee
+shall accrue and be charged until the full payment is made or the breach has been
+remedied by the Occupier. For avoidance of doubt, the payments under this clause
+are in addition to all other payments due and payable by the Occupier under the
+terms of this Agreement.
+                    </td>
+                </tr> 
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">e- The Occupier shall adhere to any inspection protocol and grant access to the
+relevant authorities to their Storage Unit(s) as and when required for inspection
+purposes.
+                    </td>
+                </tr> 
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">f- The Occupier shall refrain from storing any precious goods and metals, such as, but
+not limited to gold and silver, paintings, artefacts, any jewelry item and/or cash in
+the Storage Unit. In the event, that the Occupier stores such items in their Storage
+Unit, the Company shall not be held responsible for the damage, loss, or theft of
+any such items in any manner whatsoever.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">g- The Company shall not accept the storage of hazardous goods of any nature
+whatsoever. Failure to comply with this shall result in an initial penalty charge of
+Twenty-Five Thousand Dirhams (AED 25,000) and legal action.
+                    </td>
+                </tr>
+
+                 <tr>
+                    <td style="margin-left:20px;margin-top: 10px">h- Storage of items prohibited by the applicable laws of UAE is a criminal offence and
+Company shall not be responsible in any manner whatsoever. Any Occupier storing
+items prohibited by UAE Law shall be fully liable for any consequences and/or
+liability. For avoidance of doubt, the Company shall assist the authorities in any investigation and/or legal action against any Occupier who is storing goods which
+are prohibited by UAE Law.
+                    </td>
+                </tr>
+
+                <tr style="margin-top: 20px">
+                <td> <b><u>5.  ASSIGNMENT OR TRANSFER</u></b></td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px"><b>5.1 Assignment by the Company:</b> The Company shall be free (without the Occupier’s
+                        consent) to assign or transfer the whole or any part of the Premises to any party as the
+                        Company deems fit.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px"><b>5.2 Assignment by the Occupier:</b> The Occupier shall not assign, transfer, part with the
+possession of, sublet or grant any license whatsoever or otherwise deal with, or dispose of
+the Storage Unit or any part thereof to any other party.
+                    </td>
+                </tr>
+
+                <tr style="margin-top: 20px">       
+                    <td> <b><u>6. INSURANCE</u></b></td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">6.1 In the event of irreparable loss, the Company shall provide a blanket insurance cover
+                    which has a maximum limit of up to Five Hundred Dirhams (AED 500) per sqft. If the value
+                    of the damaged or lost goods is less than the maximum limit, then the Occupier shall only
+                    be entitled to claim for the actual value of goods. If the limit of AED 500 per sqft is
+                    considered to be insufficient by the Occupier, then the Occupier at their own cost may
+                    acquire separate insurance policies to cover such goods stored in their Storage Unit(s). The
+                    Occupier shall provide a copy of any such insurance policies acquired to the Company for
+                    their record.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">6.2 The Company shall not take any responsibility to cover any goods of the Occupier that
+                    are above the value of AED 500 per sqft as specified in Clause 6.1.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">6.3 The Occupier shall obtain adequate insurance to cover any physical harm to themselves
+                    or any related persons and/or any third-party in the process of using the Storage Unit.
+                    </td>
+                </tr>
+
+                <tr style="margin-top: 20px">       
+                    <td> <b><u>7. TERMINATION</u></b></td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">Notwithstanding anything to the contrary contained herein, the Agreement shall be
+automatically terminated if;
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">a - The Occupier commits a breach of any it’s covenants, obligations and undertaking herein
+or defaults in complying with any of the conditions of this Lease; or
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">b - The Occupier goes into liquidation or makes an assignment of the benefit of or enters
+into an arrangement or composition with creditors or stops payments and other charges
+specified in the Particulars above.
+                    </td>
+                </tr>
+
+                
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">Then without prejudice to any rights and remedies available to the Company under the
+Agreement and in law, this Agreement will stand automatically terminated without the
+need for any Court Judgment or notification or any other legal procedure.
+                    </td>
+                </tr>
+
+                
+
+                <tr style="margin-top: 20px">       
+                    <td> <b><u>8. CONSEQUENCE OF TERMINATION</u></b></td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">If the Agreement is terminated due to any reason of the Occupier’s default and non-
+compliance with any of its obligations stipulated in this Agreement or any Appendices then:
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">a -  any alterations to the Company’s work or modifications affected at the request of the
+Occupier or required to accommodate the Occupier’s requirements shall be re-instated to
+it’s former specifications by contractors employed by the Company, the cost for which shall
+be borne by the Occupier.
+                    </td>
+                </tr>
+
+                
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">b - In the event that Agreement is terminated under Clause 7, and the Occupier is
+absconding or fails to make payments due for a period of three (3) months or more, then
+the Occupier unconditionally acknowledges and undertakes that the Company has the right
+to enter the Storage Unit and dispose off any goods found inside the Storage Unit in any
+manner whatsoever as deemed fit by the Company, including but not limited to, selling the
+goods and/or destroying them. The Occupier irrevocably waives off any and all rights to
+bring forth a claim against the Company in the event of the Company exercising its rights
+under this Clause 8 (b).
+                    </td>
+                </tr>
+                <tr>
+                    <td style="margin-left:20px;margin-top: 10px">c - Exercise of the rights under Clause 8 (b) above does not absolve the Occupier’s
+obligations to pay any rental and Payments due under this Agreement. The Company has
+the right to initiate legal proceedings to recover any such outstanding amounts.
+                    </td>
+                </tr>
+            </table>
+        <!-- <pbr/> -->
+
+        <table>
+            <tr style="margin-top: 20px">       
+                <td> <b><u>9. REINSTATEMENT TO ORIGINAL CONDITION</u></b></td>
+            </tr>
+
+            <tr>
+                <td style="margin-left:20px">On the expiry, cancellation, and/or termination of this Agreement, the Occupier undertakes
+                    to handover the Storage Unit(s) with all its fittings & fixtures in good and readily leasable
+                    condition. If the Occupier fails to do so, the Company may reinstate the Storage Unit(s) to
+                    its own satisfaction, the cost of which shall solely be borne by and claimed from the
+                    Occupier.
+                </td>
+            </tr>
+
+
+            <tr style="margin-top: 20px">       
+                <td> <b><u>10. ENTIRE AGREEMENT</u></b></td>
+            </tr>
+
+            <tr>
+                <td style="margin-left:20px">The Agreement embodies the entire Agreement between the Parties and supersedes all
+                    prior agreements, correspondence, negotiation, discussion, and writings exchanged
+                    between the Parties hereto on the subject matter of the Agreement. The Agreement may
+                    not be changed and/or modified, in whole or in part, in any manner whatsoever, without a
+                    duly executed agreement between the Parties.
+                </td>
+            </tr>
+               
+            
+        <tr style="margin-top: 20px">       
+            <td> <b><u>11. GENERAL NOTICES</u></b></td>
+        </tr>
+
+        <tr>
+            <td style="margin-left:20px">Any notice, communication or demand to be given or made by or to the Company or the
+                Occupier pursuant to the Agreement shall be in writing and shall be delivered personally or
+                sent by registered mail, email or by fax to the party due to receive such notice,
+                communication or demand at its address set out in the Particulars of the Agreement (or
+                such other address as either party may advise the other in writing). In the absence of
+                evidence of earlier receipt, any such notice, communication or demand shall be deemed to
+                have been duly given if delivered personally, when left at the address set out in the
+                Particulars of Agreement (or such other address as either party may notify the other in
+                writing), if sent by registered mail and/or email.
+            </td>
+        </tr>
+
+
+        <tr style="margin-top: 20px">       
+            <td> <b><u>12. DEFECTS, REPAIR, SERVICES, OR FITTING NOTICE</u></b></td>
+        </tr>
+
+        <tr>
+            <td style="margin-left:20px">The Occupier must give prompt notice in writing of defects or want of repair in any services
+                to, or fittings in the Premises and of any circumstances likely to cause any danger, risk or
+                hazard to the Premises or any person therein.
+            </td>
+        </tr>
+
+         <tr style="margin-top: 20px">       
+            <td> <b><u>13. PERMISSION OF ENTRY</u></b></td>
+        </tr>
+
+        <tr>
+            <td style="margin-left:20px">The Occupier undertakes to permit the Company, his agents, engineers, contractors,
+                employees at all times, on reasonable notice, to enter the Premise and/or the Storage Unit
+                for carrying out repairs, renovations, maintenance or alterations to the Premises, the
+                Storage Unit(s) or to any part thereof.
+            </td>
+        </tr>
+
+        <tr style="margin-top: 20px">       
+            <td> <b><u>14. NO WAIVER</u></b></td>
+        </tr>
+
+        <tr>
+            <td style="margin-left:20px">Failure of the Company on any occasion to insist upon observance or performance by the
+                Occupier of any covenant or obligation herein contained shall not amount to a waiver of
+                such breach or acceptance of such variation by the Company.
+            </td>
+        </tr>
+
+        <tr style="margin-top: 20px">       
+            <td> <b><u>15. INDEMNIFICATION AGAINST LIABILITY</u></b></td>
+        </tr>
+
+        <tr>
+            <td style="margin-left:20px">The Occupier undertakes to indemnify the Company against any and all liability, loss, claim,
+                action, cost, expense, damage, injury or fatality caused to any person whomsoever or any
+                property whatsoever whether directly or indirectly arising from:
+            </td>
+        </tr>
+         <tr>
+            <td style="margin-left:20px">(a) the defective or damaged condition of any part of the Storage Unit or the Company’s Fit
+                    Out.
+            </td>
+        </tr>
+        <tr>
+            <td style="margin-left:20px">(b) the spread of fire or smoke or the flow of water from the Storage Unit or any part
+                thereof; or.
+            </td>
+        </tr>
+        <tr>
+            <td style="margin-left:20px">(c) the act, omission default, or neglect by the Occupier, its agents, contractors, employees,
+invitees, licensees, or customers.
+            </td>
+        </tr>
+
+        <tr style="margin-top: 20px">       
+            <td> <b><u>16. GOVERNING LAW</u></b></td>
+        </tr>
+        <tr>
+            <td style="margin-left:20px">The Agreement shall be governed by and construed in accordance with the Applicable
+federal laws of the United Arab Emirates and the laws of the Emirate of Dubai.
+            </td>
+        </tr>
+
+        <tr style="margin-top: 20px">       
+            <td> <b><u>17. COMPLIANCE WITH LAWS</u></b></td>
+        </tr>
+        <tr>
+            <td style="margin-left:20px">The Occupier undertakes to comply with all laws, orders, regulations, or requirements
+present or future including those affecting the conduct of its business and use of the
+Storage Unit(s) and Premises and to keep the Company indemnified in the event of any
+breach by the Occupier.
+            </td>
+        </tr>
+
+        <tr style="margin-top: 20px">       
+            <td> <b><u>18. JURISDICTION FOR DISPUTE RESOLUTION</u></b></td>
+        </tr>
+        <tr>
+            <td style="margin-left:20px">The Parties agree that any disputes or claims arising out of or relating to this Agreement
+shall be resolved by the court of relevant jurisdiction in Dubai.
+            </td>
+        </tr>
+        </table>
+
+        <!-- <pbr/> -->
+        <table>
+            <tr style="margin-top: 150px">
+                <td align="center"><b>IN WITNESS WHEREOF</b> the Parties executed the Agreement the day and year written
+                above.</td>
+            </tr>
+            <tr style="margin-top: 70px">
+                <td>Signed by:</td>
+                <td align="left" style="margin-right: 20px">Signed by:</td>
+            </tr>
+
+             <tr style="margin-top: 70px">
+                <td>For and on behalf of the Company</td>
+                <td>For and on behalf of the Occupier</td>
+            </tr>
+             <tr style="margin-top: 50px">
+                <td>Name:</td>
+                <td>Name:</td>
+            </tr>
+             <tr style="margin-top: 20px">
+                <td>Designation:</td>
+                <td>Designation:</td>
+            </tr>
+             <tr style="margin-top: 20px">
+                <td>Date:</td>
+                <td>Date:</td>
+            </tr>
+        </table>
+
+        <pbr/>
+
+        <table>
+            <tr style="margin-top: 20px">       
+                <td> <b><u>APPENDIX 1: House Rules (To be used as a Notice)</u></b></td>
+            </tr>
+        
+            <tr>
+                <td style="margin-top:20px"><b>1.</b> The Storage Unit shall only be used for the specified use by the Occupier as per the
+                    general terms and conditions of the Agreement
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>2.</b> Wire and steel cutters are not allowed on the Premises
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>3.</b> Pets are not allowed on the Premises as vermin bait may be present
+                </td>
+            </tr>
+
+
+            <tr>
+                <td style="margin-top:20px"><b>4.</b> Use of the Storage Unit to be undertaken with consideration for other Occupiers as well;
+and due courtesy to be extended
+                </td>
+            </tr>
+
+
+            <tr>
+                <td style="margin-top:20px"><b>5.</b> Please keep all public areas like corridors, entrance, lifts and parking areas litter free
+                </td>
+            </tr>
+
+           
+
+             <tr>
+                <td style="margin-top:20px"><b>6.</b> The Occupiers are encouraged to report any suspicious or potentially harmful event to
+the Company immediately.
+                </td>
+            </tr>
+
+             <tr>
+                <td style="margin-top:20px"><b>7.</b> The Occupiers are responsible for locking their Storage Unit and failure to do this
+resulting in either theft or damage is not the Company’s responsibility.
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>8.</b> Obstruction of corridors or main entry area wherein other Occupiers are hindered is not
+allowed and any such items left unattended in the corridors or main entry area may be
+removed at the Company’s discretion
+                </td>
+            </tr>
+
+             <tr>
+                <td style="margin-top:20px"><b>9.</b> Smoking in the Company Premises is strictly prohibited
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td style="margin-top:20px"><b>10.</b>  For the sake of personal safety, the Company recommends that NO children or minors
+are to be left unattended during a visit to the Premises. The Company shall not be
+responsible in any manner for any accident or personal injury inside or in the common
+areas (including the car park) of the Premises
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>11.</b> The Company shall not take responsibility for accidents or anything similar occurring on
+the Premises as a result of either negligence or fault of the Occupier
+                </td>
+            </tr>
+
+
+            <tr>
+                <td style="margin-top:20px"><b>12.</b> Storing perishables in the Storage Units is NOT permitted
+                </td>
+            </tr>
+
+
+            <tr>
+                <td style="margin-top:20px"><b>13.</b> Storage of dormant charcoal is not allowed as it has spontaneous combustion
+capability
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>14.</b>  Car batteries and similar items which contain acid/corrosive materials are not permitted
+for storage
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>15.</b>  Any damages to the Premises as a direct result of the Occupier’s negligence shall be
+charged to the Occupier
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>16.</b> The Company reserves the right to open any spaces if either of the following occur
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px">a. Seepage of any substance is observed from under door
+                </td>
+            </tr>
+
+
+            <tr>
+                <td style="margin-top:10px">b. Any pervading smell or odor is noted emanating from the Storage Unit
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:10px">c. Fumes of any description are noted emanating from the Storage Unit
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:10px">d. Smoke of any description is noted emanating from the Storage Unit
+                </td>
+            </tr>
+
+             <tr>
+                <td style="margin-top:20px"><b>17.</b> The Occupier may not use the Storage Unit as a makeshift office at any given point of
+time during the use of the Storage Unit
+                </td>
+            </tr>
+
+            
+    </table>
+
+     
+
+     
+        <table>
+            <tr>
+                <td style="margin-top:20px"><b>18.</b> <u>On the Mezzanine - floor, the weight restriction per Square Meter is 500
+                    kg.</u> Nonconformance to this limitation may result in structural failure and bodily harm, for
+                    which the Company shall not be liable in any manner. The Company retains the right to
+                    evict and/or financially penalize the Occupier if there is nonconformance to this condition
+                    covering weight restrictions.
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>19.</b> The Company offers Storage Units for Storage purposes in good faith and trust. Kindly
+                leave your Storage Unit(s) as clean as you would expect to receive them.
+                </td>
+            </tr>
+            <tr>
+                <td style="margin-top:20px"><b>20.</b> The Company may recommend third-party packaging and removal vendors to
+            Occupier’s for packing and transportation of their materials however for avoidance of
+            doubt, the Company is responsible for the quality or method of the work and cannot be
+            held accountable in any manner whatsoever. By agreeing to use the third-party vendors in
+            the first instance before commencement of work, the Occupier thereby unequivocally
+            indemnifies the Company from any liability
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>21.</b>The Company requires fourteen (14) calendar days of processing to return the
+            Refundable Security Deposit from the day the Storage Unit(s) is vacated in a satisfactory
+            manner
+                </td>
+            </tr>
+
+             <tr>
+                <td style="margin-top:20px"><b>22.</b>The Storage Unit should be returned to the Company in leasable condition upon check-
+                out
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>23.</b>The Storage Unit shall only be accessed by the authorised personnel of the Company
+during the Term of the Agreement
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>24.</b>The Occupier shall always ensure the safety of its staff
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>25.</b>The Occupier shall ensure that other occupants of the Premise are not harmed by any
+of the Good’s materials in the Storage Unit of the Occupier
+                </td>
+            </tr>
+           
+            <tr>
+                <td style="margin-top:20px"><b>26.</b>At no given point in time, the Occupier can give access to non-authorized personnel to
+the Storage Unit without the prior approval of the Company
+                </td>
+            </tr>
+
+            <tr>
+                <td style="margin-top:20px"><b>27.</b> Improvement suggestions are welcome at all times. Please ask our reception for a form.
+                </td>
+            </tr>
+
+           
+
+        </table>
+      
+       
+    </body>
+</pdf>
