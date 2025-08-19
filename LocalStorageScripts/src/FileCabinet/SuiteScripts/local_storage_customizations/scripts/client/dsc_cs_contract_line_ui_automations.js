@@ -8,24 +8,62 @@ define(['N/currentRecord', 'N/url', '../../lib/dsc_lib_constants.js', 'N/search'
         const pageInit = (context) => {
             const title = "pageInit() ";
 
-            try {
-                const recObj = context.currentRecord
-                let queryString = window.location.search;
-                // Parse the query string to get the parameters
-                let urlParams = new URLSearchParams(queryString);
-                // let paramExistingContractLineID = urlParams.get('existingContractLineId');
-                let paramExistingParentContractId = urlParams.get('parentContractId');
-                // console.log('paramExistingContractLineID', paramExistingContractLineID);
-                console.log('paramExistingParentContractId', paramExistingParentContractId);
+            // try {
+            //     const recObj = context.currentRecord
+            //     let queryString = window.location.search;
+            //     // Parse the query string to get the parameters
+            //     let urlParams = new URLSearchParams(queryString);
+            //     // let paramExistingContractLineID = urlParams.get('existingContractLineId');
+            //     let paramExistingParentContractId = urlParams.get('parentContractId');
+            //     // console.log('paramExistingContractLineID', paramExistingContractLineID);
+            //     console.log('paramExistingParentContractId', paramExistingParentContractId);
 
-                if (paramExistingParentContractId) {
-                    recObj.setValue('custrecord_dsc_clf_parent_contract', paramExistingParentContractId);
-                    recObj.setValue('custrecord_dsc_clf_contract_type', constantsLib.FIELD_VALUES.CONTRACT_TYPE_RENEWAL);
-                    recObj.setValue('custrecord_dsc_clf_status', constantsLib.FIELD_VALUES.CONTRACT_LINE_STATUS_OPEN);
+            //     if (paramExistingParentContractId) {
+            //         recObj.setValue('custrecord_dsc_clf_parent_contract', paramExistingParentContractId);
+            //         recObj.setValue('custrecord_dsc_clf_contract_type', constantsLib.FIELD_VALUES.CONTRACT_TYPE_RENEWAL);
+            //         recObj.setValue('custrecord_dsc_clf_status', constantsLib.FIELD_VALUES.CONTRACT_LINE_STATUS_OPEN);
+            //     }
+            // } catch (error) {
+            //     log.error("ERROR IN" + title, error);
+            //     console.error("ERROR IN" + title, error);
+            // }
+
+            try {
+                const recObj = context.currentRecord;
+                const parentContractId = recObj.getValue('custrecord_dsc_clf_parent_contract');
+                let recordMode = context.mode; 
+                if (parentContractId && recordMode === 'create') {
+                    const contractLineData = getContractLines(parentContractId);
+
+                    if (contractLineData && contractLineData.contractLineEndDate) {
+                        // Renewal case
+                        recObj.setValue({
+                            fieldId: 'custrecord_dsc_clf_contract_type',
+                            value: constantsLib.FIELD_VALUES.CONTRACT_TYPE_RENEWAL
+                        });
+
+                        const endDateObj = formatNsDateStringToObject(contractLineData.contractLineEndDate);
+                        if (endDateObj) {
+                            const startDate = new Date(endDateObj.setDate(endDateObj.getDate() + 1));
+                            recObj.setValue({
+                                fieldId: 'custrecord_dsc_clf_start_date',
+                                value: startDate
+                            });
+                        }
+                    } else {
+                        // No existing contract line → Standard
+                        recObj.setValue({
+                            fieldId: 'custrecord_dsc_clf_contract_type',
+                            value: constantsLib.FIELD_VALUES.CONTRACT_TYPE_STANDARD
+                        });
+                        recObj.setValue({
+                            fieldId: 'custrecord_dsc_clf_start_date',
+                            value: ''
+                        });
+                    }
                 }
             } catch (error) {
-                log.error("ERROR IN" + title, error);
-                console.error("ERROR IN" + title, error);
+                console.error("ERROR in pageInit", error);
             }
 
         }
@@ -151,6 +189,7 @@ define(['N/currentRecord', 'N/url', '../../lib/dsc_lib_constants.js', 'N/search'
             }
         }
         return {
+            pageInit,
             fieldChanged
         }
     }

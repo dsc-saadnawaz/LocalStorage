@@ -215,7 +215,7 @@ define(['N/record', 'N/search', 'N/error', '../../lib/dsc_lib_utils.js', '../../
             }
         }
         return {
-            beforeSubmit,
+            // beforeSubmit,
             afterSubmit
         }
     });
