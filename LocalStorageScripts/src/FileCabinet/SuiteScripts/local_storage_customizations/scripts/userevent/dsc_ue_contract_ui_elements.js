@@ -9,8 +9,8 @@ define(['../../lib/dsc_lib_utils.js', '../../lib/dsc_lib_constants.js', 'N/searc
             const logTitle = " beforeLoad() ";
             log.debug(logTitle, "<--------------- USER_EVENT_BEFORE_LOAD - START--------------->");
             try {
-                log.debug(logTitle + "utilsLib", utilsLib);
-                log.debug(logTitle + "constantsLib", constantsLib);
+                // log.debug(logTitle + "utilsLib", utilsLib);
+                // log.debug(logTitle + "constantsLib", constantsLib);
                 let contractObj = {};
                 const formObj = context.form;
                 let recordObj = context.newRecord;
@@ -23,9 +23,8 @@ define(['../../lib/dsc_lib_utils.js', '../../lib/dsc_lib_constants.js', 'N/searc
                     contractObj.contractStatus = recordObj.getValue('custrecord_dsc_cf_status');
                     contractObj.contractCheckout = recordObj.getValue('custrecord_dsc_cf_checkout');
                     contractObj.contractCustomer = recordObj.getValue('custrecord_dsc_cf_customer');
-                    
-                    if(contractObj.contractId)
-                    {
+
+                    if (contractObj.contractId) {
                         getContractLineObj = getContractLines(contractObj.contractId);
                         log.debug('getContractLineObj', getContractLineObj)
                         contractObj.contractLineId = getContractLineObj.contractLine;
@@ -52,15 +51,14 @@ define(['../../lib/dsc_lib_utils.js', '../../lib/dsc_lib_constants.js', 'N/searc
                             functionName: 'startContractCheckout(' + JSON.stringify(contractObj) + ')'
                         });
                     }
-                    if(!salesOrderRef && getContractLineObj.contractLine && [constantsLib.FIELD_VALUES.CONTRACT_STATUS_PENDING_SIGNATURE , constantsLib.FIELD_VALUES.CONTRACT_STATUS_SIGNED].includes(contractObj.contractStatus))
-                    {
+                    if (!salesOrderRef && getContractLineObj.contractLine && [constantsLib.FIELD_VALUES.CONTRACT_STATUS_PENDING_SIGNATURE, constantsLib.FIELD_VALUES.CONTRACT_STATUS_SIGNED].includes(contractObj.contractStatus)) {
                         formObj.addButton({
                             id: 'custpage_dsc_btn_create_sales_order',
                             label: 'Create Sales Order',
                             functionName: 'createSalesOrder(' + JSON.stringify(contractObj) + ')'
                         });
                     }
-                    log.debug('salesOrderRef',salesOrderRef)
+                    log.debug('salesOrderRef', salesOrderRef)
                     if (salesOrderRef) {
                         if ([constantsLib.FIELD_VALUES.CONTRACT_STATUS_PENDING_SIGNATURE, constantsLib.FIELD_VALUES.CONTRACT_STATUS_SIGNED, constantsLib.FIELD_VALUES.CONTRACT_STATUS_CHECKOUT_IN_PROGRESS, constantsLib.FIELD_VALUES.CONTRACT_STATUS_CLOSED].includes(contractObj.contractStatus)) {
                             formObj.addButton({
@@ -139,8 +137,36 @@ define(['../../lib/dsc_lib_utils.js', '../../lib/dsc_lib_constants.js', 'N/searc
                 log.error("ERROR IN" + logTitle, error);
             }
         }
+        const afterSubmit = (context) => {
+            const logTitle = " afterSubmit() ";
+            try {
+                let recordObj = context.newRecord;
+                let recordId = recordObj.id;
+                if (context.type == context.UserEventType.CREATE) {
+                    let getStorageUnit = recordObj.getValue('custrecord_dsc_cf_storage_unit');
+                    log.debug(logTitle + "getStorageUnit111", getStorageUnit);
+                    if (getStorageUnit) {
+                        record.submitFields({
+                            type: constantsLib.RECORD_TYPES.STORAGE_UNIT,
+                            id: parseInt(getStorageUnit),
+                            values: {
+                                custrecord_dsc_suf_availability_status: constantsLib.FIELD_VALUES.STORAGE_UNIT_STATUS_OCCUPIED
+                            },
+                            options: {
+                                enableSourcing: false,
+                                ignoreMandatoryFields: true
+                            }
+                        });
+                    }
+                }
+
+            } catch (error) {
+                log.error("ERROR IN" + logTitle, error);
+            }
+        }
         return {
-            beforeLoad
+            beforeLoad,
+            afterSubmit
         }
     }
 );
