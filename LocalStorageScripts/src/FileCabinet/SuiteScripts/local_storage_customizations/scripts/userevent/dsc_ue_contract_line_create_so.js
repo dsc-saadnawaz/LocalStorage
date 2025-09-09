@@ -20,7 +20,7 @@ define(['N/record', 'N/search', 'N/error', 'N/url', 'N/https', '../../lib/dsc_li
                     contractSecurityDepositAmount: recObj.getValue('custrecord_dsc_clf_security_deposit_amou'),
                     contractOtherCharges: recObj.getValue('custrecord_dsc_clf_other_charges'),
                     contractOtherChargesAmount: recObj.getValue('custrecord_dsc_other_charges_amount'),
-                    contractDiscountItem: recObj.getValue('custrecord_dsc_clf_discount_item'),
+                    contractDiscountItem: recObj.getValue('custrecord_dsc_clf_discount_item') || [],
                     contractTypeId: recObj.getValue('custrecord_dsc_clf_contract_type'),
                     contractSoRef: recObj.getValue('custrecord_dsc_clf_so_reference'),
                     contractPaymentMode: recObj.getValue('custrecord_dsc_clf_payment_mode'),

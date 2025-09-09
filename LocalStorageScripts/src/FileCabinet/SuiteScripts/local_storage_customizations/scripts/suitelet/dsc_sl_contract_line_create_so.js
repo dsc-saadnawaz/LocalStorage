@@ -87,8 +87,11 @@ define(['N/record', 'N/search', 'N/log', '../../lib/dsc_lib_constants.js'],
                     if (contractOtherCharges && contractOtherChargesAmount) {
                         addSalesOrderItems(soRec, constantsLib.OTHER_CHRAGES_ITEM, 1, contractOtherChargesAmount, null, null, null);
                     }
-                    if (contractDiscountItem) {
-                        addSalesOrderItems(soRec, contractDiscountItem, 1, null, null, null, null);
+                    if (contractDiscountItem && contractDiscountItem.length > 0) {
+                        for (let i = 0; i < contractDiscountItem.length; i++) {
+                            let discountItemId = contractDiscountItem[i];
+                            addSalesOrderItems(soRec, discountItemId, 1, null, null, null, null);
+                        }
                     }
 
                     let soId = soRec.save({
