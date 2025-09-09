@@ -8,7 +8,7 @@ define(['N/record', 'N/runtime', '../local_storage_customizations/lib/dsc_lib_co
         const title = 'afterSubmit :: ';
         try {
             const { type, newRecord, UserEventType } = context;
-            if (type == UserEventType.CREATE || type == UserEventType.EDIT) {
+            if (type == UserEventType.CREATE) {
                 const params = getScriptParams();
                 log.debug({ title: title + 'params', details: params });
 

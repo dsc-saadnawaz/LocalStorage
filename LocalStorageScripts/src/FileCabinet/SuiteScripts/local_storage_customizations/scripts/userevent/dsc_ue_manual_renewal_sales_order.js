@@ -31,28 +31,28 @@ define(['N/record', 'N/search', 'N/error', '../../lib/dsc_lib_utils.js', '../../
                                     }
                                 });
 
-                                if (contractLineType == constantsLib.FIELD_VALUES.CONTRACT_TYPE_RENEWAL) {
-                                    let { contractLineSalesOrderRef,  paymentMode} = salesOrderfromPreviousContractLine(previousContractLine);
-                                    log.debug('contractLineSalesOrderRef', contractLineSalesOrderRef);
-                                    log.debug('paymentMode', paymentMode);
-                                    if (contractLineSalesOrderRef) {
-                                        let getCreatedSalesOrder = createSalesOrder(contractLineSalesOrderRef, contractLineId , paymentMode);  //pass payment mode here
-                                        log.debug('getCreatedSalesOrder', getCreatedSalesOrder);
-                                        if (getCreatedSalesOrder) {
-                                            record.submitFields({
-                                                type: constantsLib.RECORD_TYPES.CONTRACT_LINE,
-                                                id: parseInt(contractLineId),
-                                                values: {
-                                                    custrecord_dsc_clf_so_reference: getCreatedSalesOrder
-                                                },
-                                                options: {
-                                                    enableSourcing: false,
-                                                    ignoreMandatoryFields: true
-                                                }
-                                            });
-                                        }
-                                    }
-                                }
+                                // if (contractLineType == constantsLib.FIELD_VALUES.CONTRACT_TYPE_RENEWAL) {
+                                //     let { contractLineSalesOrderRef,  paymentMode} = salesOrderfromPreviousContractLine(previousContractLine);
+                                //     log.debug('contractLineSalesOrderRef', contractLineSalesOrderRef);
+                                //     log.debug('paymentMode', paymentMode);
+                                //     if (contractLineSalesOrderRef) {
+                                //         let getCreatedSalesOrder = createSalesOrder(contractLineSalesOrderRef, contractLineId , paymentMode);  //pass payment mode here
+                                //         log.debug('getCreatedSalesOrder', getCreatedSalesOrder);
+                                //         if (getCreatedSalesOrder) {
+                                //             record.submitFields({
+                                //                 type: constantsLib.RECORD_TYPES.CONTRACT_LINE,
+                                //                 id: parseInt(contractLineId),
+                                //                 values: {
+                                //                     custrecord_dsc_clf_so_reference: getCreatedSalesOrder
+                                //                 },
+                                //                 options: {
+                                //                     enableSourcing: false,
+                                //                     ignoreMandatoryFields: true
+                                //                 }
+                                //             });
+                                //         }
+                                //     }
+                                // }
                             }
                         }
 

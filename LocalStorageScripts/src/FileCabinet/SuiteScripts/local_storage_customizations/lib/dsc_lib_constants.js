@@ -118,6 +118,10 @@ define([], () => {
                 SCRIPT_ID: "customscript_dsc_sl_gnrt_contract_pdf",
                 DEPLOY_ID: "customdeploy_dsc_sl_gnrt_contract_pdf"
             },
+            CREATE_SALES_ORDER: {
+                SCRIPT_ID: "customscript_dsc_sl_contract_num_cr_so",
+                DEPLOY_ID: "customdeploy_dsc_sl_contract_num_cr_so"
+            },
             CONTRACT_RENEWAL_PROCESS: {
                 SCRIPT_ID: "customscript_dsc_sl_contract_renewal_for",
                 DEPLOY_ID: "customdeploy_dsc_sl_contract_renewal_for"
@@ -142,6 +146,7 @@ define([], () => {
         LOCAL_STORAGE_UNIT_ITEM_ID: "9",
         SECURITY_DEPOSIT_ID: "12",
         NETWORK_LATE_CHARGES_ITEM: "8",
+        OTHER_CHRAGES_ITEM: "15",
         VAT_PERCENTAGE: "0.05",
         CONTACT_EXPIRATION_DATES: {
             "1": 3,
