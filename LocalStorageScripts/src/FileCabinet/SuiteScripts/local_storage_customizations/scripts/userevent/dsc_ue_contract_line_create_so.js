@@ -15,6 +15,7 @@ define(['N/record', 'N/search', 'N/error', 'N/url', 'N/https', '../../lib/dsc_li
                     contractDuration: recObj.getValue('custrecord_dsc_clf_duration'),
                     contractPadlock: recObj.getValue('custrecord_dsc_clf_padlock'),
                     contractPackingCharges: recObj.getValue('custrecord_dsc_clf_packing_charges'),
+                    contractLateFees: recObj.getValue('custrecord_dsc_clf_late_fee'),
                     contractPackingChargesAmount: recObj.getValue('custrecord_dsc_clf_packing_charges_amoun'),
                     contractSecurityDeposit: recObj.getValue('custrecord_dsc_clf_security_deposit'),
                     contractSecurityDepositAmount: recObj.getValue('custrecord_dsc_clf_security_deposit_amou'),
