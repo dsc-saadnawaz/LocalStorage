@@ -29,6 +29,7 @@ define(['N/record', 'N/search', 'N/log', '../../lib/dsc_lib_constants.js'],
                     let recordId = requestData.recordId;
                     let contractType = requestData.contractTypeId;
                     let contractPaymentMode = requestData.contractPaymentMode;
+                    let contractLateFees = requestData.contractLateFees;
 
                     // Look up parent contract's storage unit
                     const contractSearchLookup = search.lookupFields({
@@ -75,7 +76,7 @@ define(['N/record', 'N/search', 'N/log', '../../lib/dsc_lib_constants.js'],
                     if (parentContractStorageUnit && contractDuration) {
                         addSalesOrderItems(soRec, constantsLib.LOCAL_STORAGE_UNIT_ITEM_ID, contractDuration, storageUnitPrice, parentContractStorageUnit, storageUnitFloor, constantsLib.FIELD_VALUES.LOCATION_PRODUCTION_CITY)
                     }
-                    if (contractPadlock && contractType == constantsLib.FIELD_VALUES.CONTRACT_TYPE_STANDARD) {
+                    if (contractPadlock) {
                         addSalesOrderItems(soRec, constantsLib.PADLOCK_ITEM_ID, 1, null, null, null, null);
                     }
                     if (contractPackingCharges && contractPackingChargesAmount && contractType == constantsLib.FIELD_VALUES.CONTRACT_TYPE_STANDARD) {
@@ -87,8 +88,15 @@ define(['N/record', 'N/search', 'N/log', '../../lib/dsc_lib_constants.js'],
                     if (contractOtherCharges && contractOtherChargesAmount) {
                         addSalesOrderItems(soRec, constantsLib.OTHER_CHRAGES_ITEM, 1, contractOtherChargesAmount, null, null, null);
                     }
-                    if (contractDiscountItem) {
-                        addSalesOrderItems(soRec, contractDiscountItem, 1, null, null, null, null);
+                    if(contractLateFees)
+                    {
+                        addSalesOrderItems(soRec, constantsLib.LATE_CHARGE_ITEM_ID, 1, null, null, null, null);
+                    }
+                    if (contractDiscountItem && contractDiscountItem.length > 0) {
+                        for (let i = 0; i < contractDiscountItem.length; i++) {
+                            let discountItemId = contractDiscountItem[i];
+                            addSalesOrderItems(soRec, discountItemId, 1, null, null, null, null);
+                        }
                     }
 
                     let soId = soRec.save({
