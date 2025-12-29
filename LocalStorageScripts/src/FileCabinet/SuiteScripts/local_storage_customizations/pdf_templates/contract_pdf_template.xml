@@ -238,37 +238,40 @@
 
         <table style="width:100%; margin-top: 20px;">
             <tr>
-                <th style=" border: 1px ;  padding: 10px" align="center">Storage <br/> Unit No:</th>
+                <th style=" border: 1px ;  padding: 8px" align="center">Storage <br/> Unit No:</th>
                 <th style=" border: 1px ;  padding: 10px" align="center">Payable <br/> Amount</th>
-                <th style=" border: 1px ;  padding: 10px" align="center">Padlock</th>
-                <th style=" border: 1px ;  padding: 10px" align="center">VAT</th>
+                <th style=" border: 1px ;  padding: 8px" align="center">Padlock</th>
+                <th style=" border: 1px ;  padding: 8px" align="center">VAT</th>
                 <th style=" border: 1px ;  padding: 10px" align="center">Packing  <br/> Charges</th>
+                <th style=" border: 1px ;  padding: 8px" align="center">Other  <br/> Charges</th>
                 <th style=" border: 1px ;  padding: 10px" align="center">Security <br/> Deposit</th>
-                <th style=" border: 1px ;  padding: 10px" align="center">Discount</th>
-                <th style=" border: 1px ;  padding: 10px" align="center">Total (AED)</th>
+                <th style=" border: 1px ;  padding: 8px" align="center">Discount</th>
+                <th style=" border: 1px ;  padding: 10px" align="center">Total <br/> (AED)</th>
 
             </tr>
             <#list inputData.salesOrderDetails as details>
              <#if details_index==0>
             <tr>
-                <td style="border: 1px #000; padding: 10px" align="center">${details.storageUnitName}</td>
+                <td style="border: 1px #000; padding: 8px" align="center">${details.storageUnitName}</td>
                 <td style="border: 1px #000; padding: 10px" align="center">${details.payableAmout}</td>
-                <td style="border: 1px #000; padding: 10px" align="center">${details.padlockAmount}</td>
-                <td style="border: 1px #000; padding: 10px" align="center">${details.taxTotal} </td>
+                <td style="border: 1px #000; padding: 8px" align="center">${details.padlockAmount}</td>
+                <td style="border: 1px #000; padding: 8px" align="center">${details.taxTotal} </td>
                 <td style="border: 1px #000; padding: 10px" align="center">${details.packingCharges}</td>
+                <td style="border: 1px #000; padding: 8px" align="center">${details.otherChargesAmount}</td>
                 <td style="border: 1px #000; padding: 10px" align="center">${details.securityDepositAmount}</td>
-                <td style="border: 1px #000; padding: 10px" align="center">${details.discountAmount}</td>
+                <td style="border: 1px #000; padding: 8px" align="center">${details.discountAmount}</td>
                 <td style="border: 1px #000; padding: 10px" align="center">${details.totalAmount}</td>
             </tr>
              <#else>
               <tr>
-                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.storageUnitName}</td>
+                <td style="border: 1px #000; padding: 8px; background-color:#fffee0;" align="center">${details.storageUnitName}</td>
                 <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.payableAmout}</td>
-                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.padlockAmount}</td>
-                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.taxTotal} </td>
+                <td style="border: 1px #000; padding: 8px; background-color:#fffee0;" align="center">${details.padlockAmount}</td>
+                <td style="border: 1px #000; padding: 8px; background-color:#fffee0;" align="center">${details.taxTotal} </td>
                 <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.packingCharges}</td>
+                <td style="border: 1px #000; padding: 8px; background-color:#fffee0;" align="center">${details.otherChargesAmount}</td>
                 <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.securityDepositAmount}</td>
-                <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.discountAmount}</td>
+                <td style="border: 1px #000; padding: 8px; background-color:#fffee0;" align="center">${details.discountAmount}</td>
                 <td style="border: 1px #000; padding: 10px; background-color:#fffee0;" align="center">${details.totalAmount}</td>
             </tr>
             </#if>

@@ -88,6 +88,7 @@ define(['N/render', '../../lib/dsc_lib_utils.js', '../../lib/dsc_lib_constants.j
                             taxTotal: contract.salesOrderDetails.taxTotal,
                             packingCharges: contract.salesOrderDetails.packingCharges,
                             discountAmount: contract.salesOrderDetails.discountAmount,
+                            otherChargesAmount: contract.salesOrderDetails.otherChargesAmount,
                             securityDepositAmount: contract.salesOrderDetails.securityDepositAmount
                         })
 
@@ -206,7 +207,7 @@ define(['N/render', '../../lib/dsc_lib_utils.js', '../../lib/dsc_lib_constants.j
                             contractDetails.storageUnitDetails = Object.values(storageUnitDetailsMapObj);
                         }
 
-                        const { totalAmount, padlockAmount, payableAmout, taxTotal, packingCharges, securityDepositAmount, discountAmount, itemRateMapping } = getSalesOrderDetails(salesOrderId) // get the security deposit amount from here.
+                        const { totalAmount, padlockAmount, payableAmout, taxTotal, packingCharges, securityDepositAmount, discountAmount, itemRateMapping, otherChargesAmount } = getSalesOrderDetails(salesOrderId) // get the security deposit amount from here.
                         if (contractDetails.storageUnitDetails.length > 0) {
                             log.debug(title + "contractDetails.storageUnitDetails[0]:", contractDetails.storageUnitDetails[0])
                             const storageUnitName = contractDetails.storageUnitDetails[0].storageUnitName;
@@ -251,6 +252,7 @@ define(['N/render', '../../lib/dsc_lib_utils.js', '../../lib/dsc_lib_constants.j
                         contractDetails.salesOrderDetails.packingCharges = parseFloat(packingCharges).toFixed(2);
                         contractDetails.salesOrderDetails.discountAmount = parseFloat(discountAmount).toFixed(2);
                         contractDetails.salesOrderDetails.securityDepositAmount = parseFloat(securityDepositAmount).toFixed(2);
+                        contractDetails.salesOrderDetails.otherChargesAmount = parseFloat(otherChargesAmount).toFixed(2);
                     }
 
 
@@ -363,6 +365,9 @@ define(['N/render', '../../lib/dsc_lib_utils.js', '../../lib/dsc_lib_constants.j
                 let packingItem = items.filter((value) => value.itemId === constantsLib.PACKING_CHARGES_ITEM_ID);
                 let packingCharges = packingItem[0]?.amount || 0
 
+                let otherChargesItem = items.filter((value) => value.itemId === constantsLib.OTHER_CHRAGES_ITEM);
+                let otherChargesAmount = otherChargesItem[0]?.amount || 0
+
                 //getting security deposit here from sales order;
                 let securityDeposit = items.filter((value) => value.itemId === constantsLib.SECURITY_DEPOSIT_ID)
                 let securityDepositAmount = securityDeposit[0]?.finalItemAmount || 0
@@ -371,11 +376,11 @@ define(['N/render', '../../lib/dsc_lib_utils.js', '../../lib/dsc_lib_constants.j
                 // log.debug('itemRateMapping', itemRateMapping)
 
 
-                let totalAmount = parseFloat(payableAmoutSimple) + parseFloat(discountAmount) + parseFloat(padlockAmount) + parseFloat(taxTotal) + parseFloat(packingCharges) || 0
+                let totalAmount = parseFloat(payableAmoutSimple) + parseFloat(discountAmount) + parseFloat(padlockAmount) + parseFloat(taxTotal) + parseFloat(packingCharges) + parseFloat(otherChargesAmount) || 0
                 if (securityDepositAmount) totalAmount += parseFloat(securityDepositAmount)
 
 
-                return { totalAmount, padlockAmount, payableAmout, taxTotal, packingCharges, securityDepositAmount, discountAmount, itemRateMapping }
+                return { totalAmount, padlockAmount, payableAmout, taxTotal, packingCharges, securityDepositAmount, discountAmount, itemRateMapping, otherChargesAmount }
             } catch (error) {
                 log.error({
                     title: title + 'error',

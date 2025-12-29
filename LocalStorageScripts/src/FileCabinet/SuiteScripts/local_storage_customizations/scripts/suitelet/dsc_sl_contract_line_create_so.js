@@ -88,14 +88,13 @@ define(['N/record', 'N/search', 'N/log', '../../lib/dsc_lib_constants.js'],
                     if (contractOtherCharges && contractOtherChargesAmount) {
                         addSalesOrderItems(soRec, constantsLib.OTHER_CHRAGES_ITEM, 1, contractOtherChargesAmount, null, null, null);
                     }
-                    if(contractLateFees)
-                    {
+                    if (contractLateFees) {
                         addSalesOrderItems(soRec, constantsLib.LATE_CHARGE_ITEM_ID, 1, null, null, null, null);
                     }
                     if (contractDiscountItem && contractDiscountItem.length > 0) {
                         for (let i = 0; i < contractDiscountItem.length; i++) {
                             let discountItemId = contractDiscountItem[i];
-                            addSalesOrderItems(soRec, discountItemId, 1, null, null, null, null);
+                            addSalesOrderItems(soRec, discountItemId, contractDuration, storageUnitPrice, null, null, null);
                         }
                     }
 
@@ -202,7 +201,7 @@ define(['N/record', 'N/search', 'N/log', '../../lib/dsc_lib_constants.js'],
                         fireSlavingSync: true
                     });
                 }
-                if (quantity) {
+                if (quantity && !constantsLib.LOCAL_STORAGE_DISCOUNT_ITEMS_IDS.includes(itemId)) {
                     soRec.setCurrentSublistValue({
                         sublistId: 'item',
                         fieldId: 'quantity',
@@ -210,16 +209,48 @@ define(['N/record', 'N/search', 'N/log', '../../lib/dsc_lib_constants.js'],
                     });
                 }
                 if (amount && amount != null) {
-                    soRec.setCurrentSublistValue({
-                        sublistId: 'item',
-                        fieldId: 'rate',
-                        value: Number(amount)
-                    });
-                    soRec.setCurrentSublistValue({
-                        sublistId: 'item',
-                        fieldId: 'amount',
-                        value: Number(quantity) * Number(amount)
-                    });
+                    // log.debug(title + 'amount', amount);
+                    if(constantsLib.LOCAL_STORAGE_DISCOUNT_ITEMS_IDS.includes(itemId))
+                    {
+                        
+                        // log.debug(title + 'itemId', itemId);
+                        let getDiscountRate = Number(soRec.getCurrentSublistValue({
+                            sublistId: 'item',
+                            fieldId: 'rate',
+                        })) || 0
+                        // log.debug(title + 'getDiscountRate before', getDiscountRate);
+                        let calculatedAmount = (getDiscountRate / 100) * Number(amount) || 0
+                        soRec.setCurrentSublistValue({
+                            sublistId: "item",
+                            fieldId: "price",
+                            value: constantsLib.PRICE_LEVEL_CUSTOM, //CUSTOM
+                            fireSlavingSync: true
+                        });
+                        log.debug(title + 'calculatedAmount', calculatedAmount);
+                        soRec.setCurrentSublistValue({
+                            sublistId: 'item',
+                            fieldId: 'rate',
+                            value: parseFloat(Number(quantity) * Number(calculatedAmount)).toFixed(2)
+                        });
+                        soRec.setCurrentSublistValue({
+                            sublistId: 'item',
+                            fieldId: 'amount',
+                            value: (Number(quantity) * Number(calculatedAmount))
+                        });
+                    }
+                    else
+                    {
+                        soRec.setCurrentSublistValue({
+                            sublistId: 'item',
+                            fieldId: 'rate',
+                            value: Number(amount)
+                        });
+                        soRec.setCurrentSublistValue({
+                            sublistId: 'item',
+                            fieldId: 'amount',
+                            value: Number(quantity) * Number(amount)
+                        });
+                    }
                 }
                 // let checkStorage = soRec.getCurrentSublistValue({
                 //     sublistId: 'item',

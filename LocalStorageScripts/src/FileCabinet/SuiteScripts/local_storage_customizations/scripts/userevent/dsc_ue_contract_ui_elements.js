@@ -33,14 +33,14 @@ define(['../../lib/dsc_lib_utils.js', '../../lib/dsc_lib_constants.js', 'N/searc
                     if (contractObj.contractId && !contractObj.contractCheckout && contractObj.contractStatus != constantsLib.FIELD_VALUES.CONTRACT_STATUS_CHECKOUT_IN_PROGRESS && contractObj.contractStatus != constantsLib.FIELD_VALUES.CONTRACT_STATUS_CLOSED) {
 
                         if (salesOrderRef && getContractLineObj && getContractLineObj.contractLine != "") {
-                            if ([constantsLib.FIELD_VALUES.CONTRACT_STATUS_CHECKOUT_IN_PROGRESS, constantsLib.FIELD_VALUES.CONTRACT_STATUS_SIGNED].includes(contractObj.contractStatus)) {
+                            // if ([constantsLib.FIELD_VALUES.CONTRACT_STATUS_CHECKOUT_IN_PROGRESS, constantsLib.FIELD_VALUES.CONTRACT_STATUS_SIGNED].includes(contractObj.contractStatus)) {
                                 contractObj.previousContractLineId = getContractLineObj.contractLine;
                                 formObj.addButton({
                                     id: 'custpage_dsc_btn_contract_renewal',
                                     label: 'Renew Contract',
                                     functionName: 'manualRenewalProcess(' + JSON.stringify(contractObj) + ')'
                                 });
-                            }
+                            // }
                         }
                     }
 
